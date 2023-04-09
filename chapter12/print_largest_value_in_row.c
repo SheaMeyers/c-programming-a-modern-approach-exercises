@@ -4,14 +4,26 @@
 #define NUM_ROWS 7
 #define NUM_COLS 24
 
-
-int sum_two_d_array(const int a[][NUM_COLS])
+const int *find_largest(const int *a)
 {
-    int sum = 0;
-    for (const int *p = &a[0][0]; p <= &a[NUM_ROWS-1][NUM_COLS-1]; p++){
-        sum += *p;
+    const int *i;
+    const int *largest = a;
+    for (i = a; i < a + NUM_COLS; i++)
+    {
+        if(*largest < *i) 
+        {
+            largest = i;
+        }
     }
-    return sum;
+    return largest;
+}
+
+void print_highest_value_in_row(const int a[NUM_ROWS][NUM_COLS])
+{
+    for (int i = 0; i < NUM_ROWS; i++) {
+        const int *largest = find_largest(a[i]);
+        printf("%d\n", *largest);
+    }
 }
 
 int main(void)
@@ -26,9 +38,7 @@ int main(void)
         { 8, 14, 28, 0, 26, 14, 5, 4, 29, 20, 25, 13, 29, 9, 21, 10, 22, 18, 11, 30, 20, 17, 7, 15 }, 
     };
 
-    int sum = sum_two_d_array(tempuratures);
-
-    printf("Sum of array is %d\n", sum);
+    print_highest_value_in_row(tempuratures);
 
     return 0;
 }

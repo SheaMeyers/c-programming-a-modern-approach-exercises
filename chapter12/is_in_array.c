@@ -7,7 +7,6 @@ bool is_key_in_array(const int a[], int n, int key)
 {
     const int *i;
 
-    
     for (i = a; i < a + n; i++) {
         if(key == *i) {
             return true;

@@ -4,21 +4,18 @@
 #define NUM_ROWS 7
 #define NUM_COLS 24
 
-
-int sum_two_d_array(const int a[][NUM_COLS])
+void print_row_values(const int a[NUM_ROWS][NUM_COLS], int row)
 {
-    int sum = 0;
-    for (const int *p = &a[0][0]; p <= &a[NUM_ROWS-1][NUM_COLS-1]; p++){
-        sum += *p;
+    for (const int *p = a[row]; p < a[row] + NUM_COLS; p++){
+        printf("%d\n", *p);
     }
-    return sum;
 }
 
 int main(void)
 {
     int tempuratures[NUM_ROWS][NUM_COLS] = { 
-        { 8, 24, 7, 23, 26, 22, 27, 28, 17, 14, 8, 0, 1, 5, 21, 20, 6, 26, 24, 4, 27, 15, 28, 9 }, 
-        { 27, 25, 13, 9, 7, 26, 8, 2, 19, 18, 3, 15, 6, 4, 18, 15, 23, 0, 25, 11, 21, 1, 8, 21 }, 
+        { 8, 24, 7, 23, 26, 22, 27, 29, 17, 14, 8, 0, 1, 5, 21, 20, 6, 26, 24, 4, 27, 15, 29, 9 }, 
+        { 29, 28, 13, 9, 7, 28, 8, 2, 19, 18, 3, 15, 6, 4, 18, 15, 28, 0, 25, 11, 21, 1, 8, 21 }, 
         { 8, 14, 5, 15, 26, 10, 0, 0, 2, 5, 29, 28, 16, 30, 1, 20, 16, 27, 0, 4, 13, 19, 24, 4 }, 
         { 15, 5, 15, 13, 18, 13, 19, 5, 4, 26, 23, 16, 1, 16, 30, 29, 11, 19, 12, 25, 6, 25, 7, 14 }, 
         { 2, 13, 15, 26, 16, 8, 17, 17, 16, 1, 15, 32, 17, 0, 23, 14, 1, 0, 18, 8, 5, 23, 18, 3 }, 
@@ -26,9 +23,7 @@ int main(void)
         { 8, 14, 28, 0, 26, 14, 5, 4, 29, 20, 25, 13, 29, 9, 21, 10, 22, 18, 11, 30, 20, 17, 7, 15 }, 
     };
 
-    int sum = sum_two_d_array(tempuratures);
-
-    printf("Sum of array is %d\n", sum);
+    print_row_values(tempuratures, 5);
 
     return 0;
 }
